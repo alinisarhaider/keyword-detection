@@ -38,6 +38,14 @@ body {
 	width:400px;
 	height:400px;
 }
+.output {
+	position: absolute;
+	top: 40%;
+	left: 50%;
+	margin: -150px 0 0 -150px;
+	width:800px;
+	height:800px;
+}
 
 .login h1 { color: #fff; text-shadow: 0 0 10px rgba(0,0,0,0.3); letter-spacing:1px; text-align:center; }
 

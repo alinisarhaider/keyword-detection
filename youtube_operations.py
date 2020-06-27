@@ -44,7 +44,6 @@ class MyYouTube(pytube.YouTube):
 
 def get_audio_stream(video_url: str) -> AudioSegment:
     youtube = MyYouTube(video_url)
-    print(youtube.streams.filter(only_audio=True).all())
     data = youtube.streams.get_by_itag(140)
     data_io = data.stream_to_buffer()
     audio_segment_buffer = AudioSegment.from_file(io.BytesIO(data_io.getvalue()))
