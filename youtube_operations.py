@@ -50,5 +50,6 @@ def get_audio_stream(video_url: str) -> AudioSegment:
     data = youtube.streams.get_by_itag(140)
     # data.download(output_path='static/', filename='abc')
     data_io = data.stream_to_buffer()
-    audio_segment_buffer = AudioSegment.from_file(io.BytesIO(data_io.getvalue()))
-    return audio_segment_buffer
+    # audio_segment_buffer = AudioSegment.from_file(io.BytesIO(data_io.getvalue()))
+    # return audio_segment_buffer
+    return 1
