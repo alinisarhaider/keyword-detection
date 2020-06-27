@@ -17,12 +17,12 @@ def home():
 
 @app.route('/detect', methods=['POST'])
 def detect():
-    form_values = [x for x in request.form.values()]
-    url, keywords = form_values[0], form_values[1].split(',')#.split(' ')
-    audio_segment_buffer = get_audio_stream(video_url=url)
-    response, time_offset = transcribe_audio(audio_data=audio_segment_buffer, language='en-US')
-    transcription, timestamps_list = get_transcriptions(response_list=response, time_offset_list=time_offset)
-    detections = get_detections(keywords=keywords, transcription=transcription, timestamps_list=timestamps_list)
+    # form_values = [x for x in request.form.values()]
+    # url, keywords = form_values[0], form_values[1].split(',')#.split(' ')
+    # audio_segment_buffer = get_audio_stream(video_url=url)
+    # response, time_offset = transcribe_audio(audio_data=audio_segment_buffer, language='en-US')
+    # transcription, timestamps_list = get_transcriptions(response_list=response, time_offset_list=time_offset)
+    # detections = get_detections(keywords=keywords, transcription=transcription, timestamps_list=timestamps_list)
     #
     # html_file = open('templates/output.html', 'w')
     # data = "<!DOCTYPE html><html><head><meta charset='UTF-8'><title>Detect Keywords</title><link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'><link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'><link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'><link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>"
