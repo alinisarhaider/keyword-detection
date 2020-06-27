@@ -17,7 +17,7 @@ def home():
 
 @app.route('/detect', methods=['POST'])
 def detect():
-    # form_values = [x for x in request.form.values()]
+    form_values = [x for x in request.form.values()]
     # url, keywords = form_values[0], form_values[1].split(',')#.split(' ')
     # audio_segment_buffer = get_audio_stream(video_url=url)
     # response, time_offset = transcribe_audio(audio_data=audio_segment_buffer, language='en-US')
