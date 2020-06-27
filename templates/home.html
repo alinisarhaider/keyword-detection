@@ -15,11 +15,11 @@
  <div class="login">
 	<h1>Detect Keywords</h1>
 
-     <!-- Form to enter new data for predictions  -->
-    <form action="{{ url_for('predict')}}" method="POST">
-      <input type="text" name="url" placeholder="Enter Youtube URL e.g. https://www.youtube.com/watch?v=2X0-BOCIU2o"
+     <!-- Form to enter URL and keywords for detection  -->
+    <form action="{{ url_for('detect')}}" method="POST">
+        <input type="text" name="url" placeholder="Enter Youtube URL e.g. https://www.youtube.com/watch?v=FyjqeyyFCKI"
              required="required" /><br>
-    	<input type="text" name="keywords" placeholder="Enter Keyword here e.g. and" required="required" /><br>
+    	<input type="text" name="keywords" placeholder="Enter Keyword (or comma separated keywords) or a phrase e.g. and" required="required" /><br>
 
         <button type="submit" class="btn btn-primary btn-block btn-large">Detect</button>
     </form>
@@ -29,7 +29,7 @@
   
 
  </div>
- {{pred}}
+ {{display}}
 
 </body>
 </html>

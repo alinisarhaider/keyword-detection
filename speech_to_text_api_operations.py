@@ -1,6 +1,4 @@
 import io
-import json
-import numpy as np
 
 from google.cloud.speech import enums
 from google.cloud import speech
@@ -48,5 +46,4 @@ def transcribe_audio(audio_data: AudioSegment, language: str):
         start += step
         end += step
 
-    print("Speech to text conversion completed.")
     return response_list, time_offset_list
