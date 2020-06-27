@@ -19,7 +19,7 @@ def home():
 def detect():
     form_values = [x for x in request.form.values()]
     url, keywords = form_values[0], form_values[1].split(',')#.split(' ')
-    # audio_segment_buffer = get_audio_stream(video_url=url)
+    audio_segment_buffer = get_audio_stream(video_url=url)
     # response, time_offset = transcribe_audio(audio_data=audio_segment_buffer, language='en-US')
     # transcription, timestamps_list = get_transcriptions(response_list=response, time_offset_list=time_offset)
     # detections = get_detections(keywords=keywords, transcription=transcription, timestamps_list=timestamps_list)
