@@ -1,34 +1,27 @@
-from flask import Flask,request, url_for, redirect, render_template, jsonify
-from pycaret.regression import *
-import pandas as pd
-import pickle
-import numpy as np
+from flask import Flask, request, url_for, redirect, render_template, jsonify
+from youtube_operations import get_audio_stream
+from speech_to_text_api_operations import transcribe_audio
+from transcription_operations import get_transcriptions
+from detect_keywords import get_detections
 
 app = Flask(__name__)
 
-model = load_model('deployment_28042020')
-cols = ['age', 'sex', 'bmi', 'children', 'smoker', 'region']
 
 @app.route('/')
 def home():
     return render_template("home.html")
 
-@app.route('/predict',methods=['POST'])
-def predict():
-    int_features = [x for x in request.form.values()]
-    final = np.array(int_features)
-    data_unseen = pd.DataFrame([final], columns = cols)
-    prediction = predict_model(model, data=data_unseen, round = 0)
-    prediction = int(prediction.Label[0])
-    return render_template('home.html', pred='Expected Bill will be: {}'.format([1, 2, 3]))
 
-@app.route('/predict_api',methods=['POST'])
-def predict_api():
-    data = request.get_json(force=True)
-    data_unseen = pd.DataFrame([data])
-    prediction = predict_model(model, data=data_unseen)
-    output = prediction.Label[0]
-    return jsonify(output)
+@app.route('/predict', methods=['POST'])
+def detect():
+    form_values = [x for x in request.form.values()]
+    url, keywords = form_values[0], ''.join(form_values[1].split(',')).split(' ')
+    audio_segment_buffer = get_audio_stream(video_url=url)
+    response, time_offset = transcribe_audio(audio_data=audio_segment_buffer, language='en-US')
+    transcription, timestamps_list = get_transcriptions(response_list=response, time_offset_list=time_offset)
+    detections = get_detections(keywords=keywords, transcription=transcription, timestamps_list=timestamps_list)
+    return render_template('home.html', display='{} detected at: {}'.format(keywords[0], list(detections.values())[0]))
+
 
 if __name__ == '__main__':
     app.run(debug=True)
