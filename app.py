@@ -12,15 +12,16 @@ def home():
     return render_template("home.html")
 
 
-@app.route('/detect', methods=['POST'])
-def detect():
+@app.route('/predict', methods=['POST'])
+def predict():
     form_values = [x for x in request.form.values()]
     url, keywords = form_values[0], ''.join(form_values[1].split(',')).split(' ')
     audio_segment_buffer = get_audio_stream(video_url=url)
     response, time_offset = transcribe_audio(audio_data=audio_segment_buffer, language='en-US')
     transcription, timestamps_list = get_transcriptions(response_list=response, time_offset_list=time_offset)
     detections = get_detections(keywords=keywords, transcription=transcription, timestamps_list=timestamps_list)
-    return render_template('home.html', display='{} detected at: {}'.format(keywords[0], list(detections.values())[0]))
+    return render_template('home.html', pred='Expected Bill will be: {}'.format([1, 2, 3]))
+    # return render_template('home.html', display='{} detected at: {}'.format(keywords[0], list(detections.values())[0]))
 
 
 if __name__ == '__main__':
