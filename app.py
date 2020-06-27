@@ -12,7 +12,7 @@ def home():
     return render_template("home.html")
 
 
-@app.route('/predict', methods=['POST'])
+@app.route('/detect', methods=['POST'])
 def detect():
     form_values = [x for x in request.form.values()]
     url, keywords = form_values[0], ''.join(form_values[1].split(',')).split(' ')
