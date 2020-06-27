@@ -29,7 +29,7 @@ def detect():
     data += "<link type='text/css' rel='stylesheet' href='{{ url_for("
     data += '"static", filename="./style.css") }}'
     data += "'>"
-    data += "</head><body><div><center><table border=1'><tr style='text-align:left'><th>Keyword</th><th>Occurrence time in video (Min:Sec)</th></tr>"
+    data += "</head><body style='overflow:auto'><div><center><table border=1><tr style='text-align:left'><th>Keyword</th><th>Occurrence time in video (Min:Sec)</th></tr>"
 
     for key, value in detections.items():
         if len(value) == 0:
