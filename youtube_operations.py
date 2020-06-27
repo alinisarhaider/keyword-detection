@@ -12,9 +12,6 @@ from pytube.exceptions import VideoUnavailable
 from pytube.helpers import apply_mixin
 import io
 from pydub import AudioSegment
-AudioSegment.converter = "ffmpeg.exe"
-AudioSegment.ffmpeg = "ffmpeg.exe"
-AudioSegment.ffprobe = "ffprobe.exe"
 
 
 class MyYouTube(pytube.YouTube):
@@ -51,6 +48,6 @@ def get_audio_stream(video_url: str):
     data.download(output_path='static/', filename='abc')
     # data_io = data.stream_to_buffer()
     # audio_segment_buffer = AudioSegment.from_file(io.BytesIO(data_io.getvalue()))
-    # audio_segment_buffer = AudioSegment.from_file('static/abc.mp4', 'mp4')
-    # return audio_segment_buffer
-    return 1
+    audio_segment_buffer = AudioSegment.from_file('static/abc.mp4', 'mp4')
+    return audio_segment_buffer
+    # return 1
