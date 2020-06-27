@@ -45,9 +45,9 @@ class MyYouTube(pytube.YouTube):
 def get_audio_stream(video_url: str):
     youtube = MyYouTube(video_url)
     data = youtube.streams.get_by_itag(140)
-    data.download(output_path='static/', filename='abc')
+    # data.download(output_path='static/', filename='abc')
+    # audio_segment_buffer = AudioSegment.from_file('static/abc.mp4', 'mp4')
     data_io = data.stream_to_buffer()
     audio_segment_buffer = AudioSegment.from_file(io.BytesIO(data_io.getvalue()))
-    # audio_segment_buffer = AudioSegment.from_file('static/abc.mp4', 'mp4')
     return audio_segment_buffer
     # return 1
