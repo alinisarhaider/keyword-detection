@@ -43,10 +43,10 @@ class MyYouTube(pytube.YouTube):
 
 
 def get_audio_stream(video_url: str):
-    # try:
-    youtube = MyYouTube(video_url)
-    # except:
-    #     return 'No YouTube video found for the given URL. Please try some other video.'
+    try:
+        youtube = MyYouTube(video_url)
+    except:
+        return 'No YouTube video found for the given URL. Please try some other video.'
 
     video_length = int(youtube.player_config_args['player_response']['videoDetails']['lengthSeconds'])
     if video_length > 90:
