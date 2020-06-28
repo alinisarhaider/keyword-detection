@@ -19,14 +19,14 @@
     <form action="{{ url_for('detect')}}" method="POST">
         <input type="text" name="url" placeholder="Enter Youtube URL e.g. https://www.youtube.com/watch?v=FyjqeyyFCKI"
              required="required" /><br>
-    	<input type="text" name="keywords" placeholder="Enter Keyword (or comma separated keywords) or a phrase e.g. and" required="required" /><br>
+    	<input type="text" name="keywords" placeholder="Enter Keyword (or comma separated keywords) or a phrase" required="required" /><br>
 
         <button type="submit" class="btn btn-primary btn-block btn-large">Detect</button>
     </form>
 
    <br>
    <br>
-     <text style="font-size:11px">Note: The server does not support long processing. Kindly use short length (under 2 minutes) videos.</text>
+     <text style="font-size:11px">Note: This server does not support long file processing. Kindly use short length (under 90 seconds) videos.</text>
 
  </div>
  {{display}}
