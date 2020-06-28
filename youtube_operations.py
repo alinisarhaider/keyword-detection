@@ -52,5 +52,4 @@ def get_audio_stream(video_url: str):
     # audio_segment_buffer = AudioSegment.from_file('static/abc.mp4', 'mp4')
     data_io = data.stream_to_buffer()
     audio_segment_buffer = AudioSegment.from_file(io.BytesIO(data_io.getvalue()))
-    return audio_segment_buffer
-    # return 1
+    return audio_segment_buffer[0:90000]
