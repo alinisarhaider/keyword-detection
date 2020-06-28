@@ -22,10 +22,10 @@ def detect():
     if type(audio_segment_buffer) == str:
         return render_template('home.html', display=audio_segment_buffer)
 
-    response, time_offset = transcribe_audio(audio_data=audio_segment_buffer, language='en-US')
-    transcription, timestamps_list = get_transcriptions(response_list=response, time_offset_list=time_offset)
-    detections = get_detections(keywords=keywords, transcription=transcription, timestamps_list=timestamps_list)
-    create_html(detections=detections)
+    # response, time_offset = transcribe_audio(audio_data=audio_segment_buffer, language='en-US')
+    # transcription, timestamps_list = get_transcriptions(response_list=response, time_offset_list=time_offset)
+    # detections = get_detections(keywords=keywords, transcription=transcription, timestamps_list=timestamps_list)
+    # create_html(detections=detections)
 
     return render_template('output.html')
 
