@@ -48,7 +48,7 @@ def get_audio_stream(video_url: str):
     except:
         return 'No YouTube video found for the given URL. Please try some other video.'
 
-    video_length = youtube.player_config_args['player_response']['videoDetails']['lengthSeconds']
+    video_length = int(youtube.player_config_args['player_response']['videoDetails']['lengthSeconds'])
     if video_length > 90:
         return 'Videos longer than 90 seconds cannot be processed because of server limitations. ' \
                'Please choose a short video.'

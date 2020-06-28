@@ -20,7 +20,8 @@ def detect():
     url, keywords = form_values[0], form_values[1].split(',')
     audio_segment_buffer = get_audio_stream(video_url=url)
     if type(audio_segment_buffer) == str:
-        return render_template('home.html', display=audio_segment_buffer)
+        return render_template('home.html', display=audio_segment_buffer,
+                               example='e.g. https://www.youtube.com/watch?v=vW9edcLqND0')
 
     response, time_offset = transcribe_audio(audio_data=audio_segment_buffer, language='en-US')
     transcription, timestamps_list = get_transcriptions(response_list=response, time_offset_list=time_offset)
