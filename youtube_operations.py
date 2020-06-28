@@ -46,10 +46,16 @@ def get_audio_stream(video_url: str):
     try:
         youtube = MyYouTube(video_url)
     except:
-        return 'No YouTube video found for the given URL. Please try again.'
+        return 'No YouTube video found for the given URL. Please try some other video.'
+
+    video_length = youtube.player_config_args['player_response']['videoDetails']['lengthSeconds']
+    if video_length > 90:
+        return 'Videos longer than 90 seconds cannot be processed because of server limitations. ' \
+               'Please choose a short video.'
+
     data = youtube.streams.get_by_itag(140)
     # data.download(output_path='static/', filename='abc')
     # audio_segment_buffer = AudioSegment.from_file('static/abc.mp4', 'mp4')
     data_io = data.stream_to_buffer()
     audio_segment_buffer = AudioSegment.from_file(io.BytesIO(data_io.getvalue()))
-    return audio_segment_buffer[0:90000]
+    return audio_segment_buffer
