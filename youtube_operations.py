@@ -43,7 +43,10 @@ class MyYouTube(pytube.YouTube):
 
 
 def get_audio_stream(video_url: str):
-    youtube = MyYouTube(video_url)
+    try:
+        youtube = MyYouTube(video_url)
+    except:
+        return 'No YouTube video found for the given URL. Please try again.'
     data = youtube.streams.get_by_itag(140)
     # data.download(output_path='static/', filename='abc')
     # audio_segment_buffer = AudioSegment.from_file('static/abc.mp4', 'mp4')
