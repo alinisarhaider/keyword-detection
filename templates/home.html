@@ -17,7 +17,7 @@
 
      <!-- Form to enter URL and keywords for detection  -->
     <form action="{{ url_for('detect')}}" method="POST">
-        <input type="text" name="url" placeholder="Enter Youtube URL e.g. https://www.youtube.com/watch?v=FyjqeyyFCKI"
+        <input type="url" name="url" placeholder="Enter Youtube URL e.g. https://www.youtube.com/watch?v=FyjqeyyFCKI"
              required="required" /><br>
     	<input type="text" name="keywords" placeholder="Enter Keyword (or comma separated keywords) or a phrase" required="required" /><br>
 
