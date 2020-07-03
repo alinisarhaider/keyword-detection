@@ -12,9 +12,7 @@ def transcribe_audio(audio_data: AudioSegment, language: str):
     """Transcribe the given audio file."""
 
     # Checking credentials
-    service_account_info = os.environ.get('account_info')
-    print('Heyyyyyyy!!!!!\n', type(service_account_info))
-    print(service_account_info)
+    service_account_info = dict(os.environ.get('account_info'))
     credentials = service_account.Credentials.from_service_account_info(service_account_info)
     client = speech.SpeechClient(credentials=credentials)
 
